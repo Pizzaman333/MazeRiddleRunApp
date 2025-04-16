@@ -7,10 +7,12 @@ Mazer Riddle Run is a fun riddle game where you navigate intricate mazes and sol
 
 ---
 
-## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="25" alt="C#"/> <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logo-winui.svg" height="25" alt="WinUI 3"/> Technologies 
+## Technologies 
 <div>
+  <p><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="50" alt="C#"/> &nbsp;&nbsp; <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logo-winui.svg" height="50" alt="WinUI 3"/> &nbsp;&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg" height="50" alt="VisualStudio"/>
+  </p>
   <p>
-    Built using C#  and WinUI 3  , leveraging modern Windows UI components for an intuitive and dynamic user experience.
+    Built using C#  and WinUI 3 (with Visual Studio, of course), leveraging modern Windows UI components for an intuitive and dynamic user experience.
   </p>
 </div>
 
