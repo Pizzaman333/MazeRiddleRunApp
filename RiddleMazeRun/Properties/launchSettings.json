@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RiddleMazeRun (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "RiddleMazeRun (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

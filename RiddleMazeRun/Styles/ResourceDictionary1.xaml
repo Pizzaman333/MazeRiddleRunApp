@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--<Color x:Key="HighlightColor">#DA291C</Color>
+    <Color x:Key="HoverColor">#f4eded</Color>-->
+    <Color x:Key="HighlightColor">#2aa837</Color>
+<Color x:Key="HoverColor">#e1eed9</Color>
+</ResourceDictionary>

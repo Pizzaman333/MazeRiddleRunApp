@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="RiddleMazeRun.Windows.AuthWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RiddleMazeRun.Windows"
+    xmlns:local1="using:RiddleMazeRun.CustomElements"
+    Title="AuthWindow">
+
+    <Grid ColumnDefinitions="*, *">
+        <StackPanel
+            Grid.Column="0"
+            Width="400"
+            Height="500"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            CornerRadius="15"
+            Orientation="Vertical"
+            Style="{ThemeResource Bg-StackPanel}">
+            <TextBlock
+                Margin="0,35,0,0"
+                FontSize="32"
+                Text="Please authorize"
+                TextAlignment="Center" />
+            <local1:ButtonWithHover
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Content="Log in"
+                FontSize="20">
+                <local1:ButtonWithHover.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border
+                                x:Name="ButtonBase"
+                                CornerRadius="7"
+                                Opacity="1">
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="ButtonBrush" Color="{ThemeResource HighlightColor}" />
+                                </Border.Background>
+                            </Border>
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentPresenter.Foreground>
+                                    <SolidColorBrush x:Name="TextBrush" Color="{ThemeResource HoverColor}" />
+                                </ContentPresenter.Foreground>
+                            </ContentPresenter>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </local1:ButtonWithHover.Template>
+            </local1:ButtonWithHover>
+            <local1:ButtonWithHover
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Content="Sign in"
+                FontSize="20">
+                <local1:ButtonWithHover.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border
+                                x:Name="ButtonBase"
+                                CornerRadius="7"
+                                Opacity="1">
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="ButtonBrush" Color="{ThemeResource HighlightColor}" />
+                                </Border.Background>
+                            </Border>
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentPresenter.Foreground>
+                                    <SolidColorBrush x:Name="TextBrush" Color="{ThemeResource HoverColor}" />
+                                </ContentPresenter.Foreground>
+                            </ContentPresenter>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </local1:ButtonWithHover.Template>
+            </local1:ButtonWithHover>
+            <local1:ButtonWithHover
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Content="Continue as guest"
+                FontSize="20">
+                <local1:ButtonWithHover.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border
+                                x:Name="ButtonBase"
+                                CornerRadius="7"
+                                Opacity="1">
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="ButtonBrush" Color="{ThemeResource HighlightColor}" />
+                                </Border.Background>
+                            </Border>
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentPresenter.Foreground>
+                                    <SolidColorBrush x:Name="TextBrush" Color="{ThemeResource HoverColor}" />
+                                </ContentPresenter.Foreground>
+                            </ContentPresenter>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </local1:ButtonWithHover.Template>
+            </local1:ButtonWithHover>
+
+            <local1:ButtonWithHover
+                Width="200"
+                Height="40"
+                Margin="0,30,0,0"
+                HorizontalAlignment="Center"
+                Click="ExitButton_Click"
+                Content="Exit"
+                FontSize="20">
+                <local1:ButtonWithHover.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="ButtonBase" RenderTransformOrigin="0.5,0.5">
+                            <!--<Grid.RenderTransform>
+                                <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                            </Grid.RenderTransform>-->
+
+                            <Border
+                                CornerRadius="7"
+                                Opacity="1"
+                                RenderTransformOrigin="0.5,0.5">
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="ButtonBrush" Color="{ThemeResource HighlightColor}" />
+                                </Border.Background>
+                                <Border.RenderTransform>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                                </Border.RenderTransform>
+                            </Border>
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentPresenter.Foreground>
+                                    <SolidColorBrush x:Name="TextBrush" Color="{ThemeResource HoverColor}" />
+                                </ContentPresenter.Foreground>
+                            </ContentPresenter>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ScaleTransform"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1"
+                                                Duration="0:0:0.3" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ScaleTransform"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1"
+                                                Duration="0:0:0.3" />
+
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ScaleTransform"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1.5"
+                                                Duration="0:0:0.3" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ScaleTransform"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1.15"
+                                                Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </local1:ButtonWithHover.Template>
+            </local1:ButtonWithHover>
+
+            <local1:ButtonWithHover
+                Width="300"
+                Height="40"
+                Margin="0,30,0,0"
+                HorizontalAlignment="Center"
+                Click="ExitButton_Click"
+                Content="Exit"
+                FontSize="20">
+                <local1:ButtonWithHover.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="ButtonBase" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <RotateTransform x:Name="RotateTransform" Angle="0" />
+                            </Grid.RenderTransform>
+
+                            <Border
+                                CornerRadius="7"
+                                Opacity="1"
+                                RenderTransformOrigin="0.5,0.5">
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="ButtonBrush" Color="{ThemeResource HighlightColor}" />
+                                </Border.Background>
+
+                                <!--<Border.RenderTransform>
+                                    <RotateTransform x:Name="RotateTransform" Angle="0" />
+                                </Border.RenderTransform>-->
+                            </Border>
+
+
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentPresenter.Foreground>
+                                    <SolidColorBrush x:Name="TextBrush" Color="{ThemeResource HoverColor}" />
+                                </ContentPresenter.Foreground>
+                            </ContentPresenter>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <DoubleAnimation
+                                                BeginTime="0:0:0.2"
+                                                Storyboard.TargetName="RotateTransform"
+                                                Storyboard.TargetProperty="Angle"
+                                                To="0"
+                                                Duration="0:0:4.5" />
+
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="ButtonBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HoverColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <ColorAnimation
+                                                Storyboard.TargetName="TextBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{ThemeResource HighlightColor}"
+                                                Duration="0:0:0.3" />
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="RotateTransform"
+                                                Storyboard.TargetProperty="Angle"
+                                                To="720"
+                                                Duration="0:0:4" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </local1:ButtonWithHover.Template>
+            </local1:ButtonWithHover>
+        </StackPanel>
+        <StackPanel
+            Grid.Column="1"
+            Padding="100"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            CornerRadius="15"
+            Orientation="Vertical"
+            Spacing="35"
+            Style="{ThemeResource Bg-StackPanel}">
+
+            <!--  TranslateTransform Demo  -->
+            <Button
+                Width="200"
+                Height="50"
+                Background="SkyBlue"
+                Content="Translate (Circle)"
+                RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TranslateTransform x:Name="TranslateTransform" />
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever">
+                                <!--  X animation for circular motion  -->
+                                <DoubleAnimation
+                                    AutoReverse="True"
+                                    Storyboard.TargetName="TranslateTransform"
+                                    Storyboard.TargetProperty="X"
+                                    From="-30"
+                                    To="30"
+                                    Duration="0:0:2" />
+                                <!--  Y animation with phase offset  -->
+                                <DoubleAnimation
+                                    AutoReverse="True"
+                                    BeginTime="0:0:1"
+                                    Storyboard.TargetName="TranslateTransform"
+                                    Storyboard.TargetProperty="Y"
+                                    From="-10"
+                                    To="10"
+                                    Duration="0:0:2" />
+                                <!--  Offset for circular motion  -->
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <!--  RotateTransform Demo  -->
+            <Button
+                Width="200"
+                Height="50"
+                Background="LightCoral"
+                Content="Rotate"
+                RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <RotateTransform x:Name="RotateTransform" />
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever">
+                                <DoubleAnimation
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetName="RotateTransform"
+                                    Storyboard.TargetProperty="Angle"
+                                    From="0"
+                                    To="360"
+                                    Duration="0:0:2" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <!--  ScaleTransform Demo  -->
+            <Button
+                Width="200"
+                Height="50"
+                Background="Green"
+                Content="Scale"
+                RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <ScaleTransform x:Name="ScaleTransform" />
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+                                <DoubleAnimation
+                                    Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleX"
+                                    From="1"
+                                    To="3.5"
+                                    Duration="0:0:2" />
+                                <DoubleAnimation
+                                    Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleY"
+                                    From="1"
+                                    To="3.5"
+                                    Duration="0:0:2" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <!--  SkewTransform Demo  -->
+            <Button
+                Width="200"
+                Height="50"
+                Background="DarkMagenta"
+                Content="Skew"
+                RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <SkewTransform x:Name="SkewTransform" />
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+                                <DoubleAnimation
+                                    Storyboard.TargetName="SkewTransform"
+                                    Storyboard.TargetProperty="AngleX"
+                                    From="0"
+                                    To="40"
+                                    Duration="0:0:2" />
+                                <DoubleAnimation
+                                    Storyboard.TargetName="SkewTransform"
+                                    Storyboard.TargetProperty="AngleY"
+                                    From="0"
+                                    To="20"
+                                    Duration="0:0:2" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <!--  TransformGroup Combo Demo  -->
+            <Button
+                Width="200"
+                Height="50"
+                Background="Plum"
+                Content="Scale, Rotate and translate"
+                RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="ScaleTransform_Combo" />
+                        <RotateTransform x:Name="RotateTransform_Combo" />
+                        <TranslateTransform x:Name="TranslateTransform_Combo" />
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+                                <DoubleAnimation
+                                    Storyboard.TargetName="ScaleTransform_Combo"
+                                    Storyboard.TargetProperty="ScaleX"
+                                    From="1"
+                                    To="3.2"
+                                    Duration="0:0:2" />
+                                <DoubleAnimation
+                                    Storyboard.TargetName="ScaleTransform_Combo"
+                                    Storyboard.TargetProperty="ScaleY"
+                                    From="1"
+                                    To="3.2"
+                                    Duration="0:0:2" />
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RotateTransform_Combo"
+                                    Storyboard.TargetProperty="Angle"
+                                    From="0"
+                                    To="360"
+                                    Duration="0:0:3" />
+                                <DoubleAnimation
+                                    Storyboard.TargetName="TranslateTransform_Combo"
+                                    Storyboard.TargetProperty="X"
+                                    From="0"
+                                    To="5"
+                                    Duration="0:0:2" />
+                                <DoubleAnimation
+                                    Storyboard.TargetName="TranslateTransform_Combo"
+                                    Storyboard.TargetProperty="Y"
+                                    From="0"
+                                    To="60"
+                                    Duration="0:0:2" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

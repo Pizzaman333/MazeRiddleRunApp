@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="RiddleMazeRun.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RiddleMazeRun"
+    Title="RiddleMazeRun"
+    >
+
+    <Grid x:Name="DaddyGrid" Style="{ThemeResource Bg-Grid}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--  Row backgrounds  -->
+        <Rectangle
+            Grid.Row="0"
+            Grid.ColumnSpan="14"
+            Fill="MediumSeaGreen" />
+        <Rectangle
+            Grid.Row="1"
+            Grid.ColumnSpan="14"
+            Fill="CornflowerBlue" />
+        <Rectangle
+            Grid.Row="2"
+            Grid.ColumnSpan="14"
+            Fill="LightCoral" />
+        <Rectangle
+            Grid.Row="3"
+            Grid.ColumnSpan="14"
+            Fill="Goldenrod" />
+        <Rectangle
+            Grid.Row="4"
+            Grid.ColumnSpan="14"
+            Fill="Teal" />
+        <Rectangle
+            Grid.Row="5"
+            Grid.ColumnSpan="14"
+            Fill="SlateGray" />
+        <Rectangle
+            Grid.Row="6"
+            Grid.ColumnSpan="14"
+            Fill="Tomato" />
+        <Rectangle
+            Grid.Row="7"
+            Grid.ColumnSpan="14"
+            Fill="OliveDrab" />
+        <Rectangle
+            Grid.Row="8"
+            Grid.ColumnSpan="14"
+            Fill="DodgerBlue" />
+        <Rectangle
+            Grid.Row="9"
+            Grid.ColumnSpan="14"
+            Fill="Crimson" />
+        <Rectangle
+            Grid.Row="10"
+            Grid.ColumnSpan="14"
+            Fill="DarkCyan" />
+        <Rectangle
+            Grid.Row="11"
+            Grid.ColumnSpan="14"
+            Fill="DarkGoldenrod" />
+        <Rectangle
+            Grid.Row="12"
+            Grid.ColumnSpan="14"
+            Fill="SaddleBrown" />
+        <Rectangle
+            Grid.Row="13"
+            Grid.ColumnSpan="14"
+            Fill="DarkSlateGray" />
+
+
+        
+          <!--Column overlays (semi-transparent)-->  
+        
+
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="0"
+            Fill="Black"
+            Opacity="0.15" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="1"
+            Fill="Black"
+            Opacity="0.2" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="2"
+            Fill="Black"
+            Opacity="0.15" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="3"
+            Fill="Black"
+            Opacity="0.2" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="4"
+            Fill="Black"
+            Opacity="0.15" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="5"
+            Fill="Black"
+            Opacity="0.2" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="6"
+            Fill="Black"
+            Opacity="0.15" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="7"
+            Fill="Black"
+            Opacity="0.2" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="8"
+            Fill="Black"
+            Opacity="0.15" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="9"
+            Fill="Black"
+            Opacity="0.2" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="10"
+            Fill="Black"
+            Opacity="0.15" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="11"
+            Fill="Black"
+            Opacity="0.2" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="12"
+            Fill="Black"
+            Opacity="0.15" />
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.Column="13"
+            Fill="Black"
+            Opacity="0.2" />
+
+
+        <Rectangle
+            Grid.RowSpan="14"
+            Grid.ColumnSpan="14"
+            Fill="Black"
+            Opacity="0.5" />
+
+
+        <StackPanel
+            Grid.Row="1"
+            Grid.RowSpan="12"
+            Grid.Column="4"
+            Grid.ColumnSpan="6"
+            Width="400"
+            Height="560"
+            CornerRadius="15"
+            Orientation="Vertical"
+            Style="{ThemeResource Bg-StackPanel}">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock
+                    Margin="70,9,0,0"
+                    FontSize="18"
+                    Text="Light theme" />
+                <ToggleSwitch
+                    x:Name="ThemeToggle"
+                    Margin="20,0,0,0"
+                    Toggled="ThemeToggle_Toggled" />
+            </StackPanel>
+            <TextBlock
+                Margin="0,5,0,0"
+                FontSize="48"
+                Text="Game paused"
+                TextAlignment="Center" />
+            <Button
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                CornerRadius="7"
+                Style="{ThemeResource St-Button}">
+                <Grid Width="275" ColumnDefinitions="auto, *, auto">
+                    <FontIcon
+                        Grid.Column="0"
+                        FontSize="20"
+                        Glyph="&#xE7FC;" />
+                    <TextBlock
+                        Grid.Column="2"
+                        FontSize="20"
+                        Text="Back to game" />
+                </Grid>
+            </Button>
+            <Button
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                CornerRadius="7"
+                Style="{ThemeResource St-Button}">
+                <Grid Width="275">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+
+                    </Grid.ColumnDefinitions>
+                    <FontIcon
+                        Grid.Column="0"
+                        FontSize="20"
+                        Glyph="&#xE7C1;" />
+                    <TextBlock
+                        Grid.Column="2"
+                        FontSize="20"
+                        Text="Level objectives" />
+                </Grid>
+            </Button>
+            <Button
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                CornerRadius="7"
+                Style="{ThemeResource St-Button}">
+                <Grid Width="275" ColumnDefinitions="auto, *, auto">
+                    <FontIcon
+                        Grid.Column="0"
+                        FontSize="20"
+                        Glyph="&#xE713;" />
+                    <TextBlock
+                        Grid.Column="2"
+                        FontSize="20"
+                        Text="Settings" />
+                </Grid>
+            </Button>
+            <Button
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                CornerRadius="7"
+                Style="{ThemeResource St-Button}">
+                <Grid Width="275" ColumnDefinitions="auto, *, auto">
+                    <FontIcon
+                        Grid.Column="0"
+                        FontSize="20"
+                        Glyph="&#xEA80;" />
+                    <TextBlock
+                        Grid.Column="2"
+                        FontSize="20"
+                        Text="How to play" />
+                </Grid>
+            </Button>
+            <HyperlinkButton
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                CornerRadius="7"
+                NavigateUri="https://pizzaman333.github.io/MazeRiddleRun/">
+                <Grid Width="275" ColumnDefinitions="auto, *, auto">
+                    <FontIcon
+                        Grid.Column="0"
+                        FontSize="20"
+                        Glyph="&#xE9CE;" />
+                    <TextBlock
+                        Grid.Column="2"
+                        FontSize="20"
+                        Text="Help" />
+                </Grid>
+            </HyperlinkButton>
+            <Button
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                CornerRadius="7"
+                Style="{ThemeResource St-Button}">
+                <Grid Width="275" ColumnDefinitions="auto, *, auto">
+                    <FontIcon
+                        Grid.Column="0"
+                        FontSize="20"
+                        Glyph="&#xF000;" />
+                    <TextBlock
+                        Grid.Column="2"
+                        FontSize="20"
+                        Text="About the game" />
+                </Grid>
+            </Button>
+            <Button
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Click="ExitButton_Click"
+                CornerRadius="7"
+                Style="{ThemeResource St-Button}">
+                <Grid Width="275" ColumnDefinitions="auto, *, auto">
+                    <FontIcon
+                        Grid.Column="0"
+                        FontSize="20"
+                        Glyph="&#xE711;" />
+                    <TextBlock
+                        Grid.Column="2"
+                        FontSize="20"
+                        Text="Exit" />
+                </Grid>
+            </Button>
+        </StackPanel>
+
+      
+    </Grid>
+
+
+</Window>
