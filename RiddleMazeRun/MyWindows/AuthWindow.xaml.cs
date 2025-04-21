@@ -27,13 +27,26 @@ public sealed partial class AuthWindow : Window
         appWindowPresenter.PreferredMinimumWidth = 500;
         appWindowPresenter.PreferredMinimumHeight = 800;
         //MoveAllDown.Begin();
-        var brush = (LinearGradientBrush)Application.Current.Resources["BgGradientBrush"];
+        var brush = (LinearGradientBrush)Application.Current.Resources["BgLinearGradientBrush"];
         AuthGrid.Background = brush;
+
+        var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+        var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
+        var appWindow = AppWindow.GetFromWindowId(windowId);
+
+        appWindow.Closing += AppWindow_Closing;
+    }
+
+    private void AppWindow_Closing(AppWindow sender, AppWindowClosingEventArgs args)
+    {
+        if (ConfirmExitControl.Opacity != 0) return;
+        args.Cancel = true; // prevent it from closing
+        ConfirmExitControl.Show();
     }
 
     private void ExitButton_Click(object sender, RoutedEventArgs e)
     {
-        Application.Current.Exit();
+        ConfirmExitControl.Show();
     }
 
     private static bool IsEmailValid(string email)
@@ -80,26 +93,27 @@ public sealed partial class AuthWindow : Window
     {
         if (LogInInutsAreActive)
         {
-            string email = LogInEmailTextBox.Text;
-            string password = LogInPasswordTextBox.Text;
-            var errors = GetPasswordValidationErrors(password);
+            //string email = LogInEmailTextBox.Text;
+            //string password = LogInPasswordTextBox.Text;
+            //var errors = GetPasswordValidationErrors(password);
 
-            if (!IsEmailValid(email))
-            {
-                LogInEmailError.Begin();
-                return;
-            }
-            else if (errors != String.Empty)
-            {
-                LogInEmailNoError.Begin();
-                LogInPasswordError.Begin();
-                LogInPasswordErrorText.Text = errors;
-                //LogInPasswordErrorText.Visibility = Visibility.Visible;
-                return;
-            }
+            //if (!IsEmailValid(email))
+            //{
+            //    LogInEmailError.Begin();
+            //    return;
+            //}
+            //else if (errors != String.Empty)
+            //{
+            //    LogInEmailNoError.Begin();
+            //    LogInPasswordError.Begin();
+            //    LogInPasswordErrorText.Text = errors;
+            //    //LogInPasswordErrorText.Visibility = Visibility.Visible;
+            //    return;
+            //}
 
             var mainWindow = new MainWindow();
             mainWindow.Activate();
+            mainWindow.ExtendsContentIntoTitleBar = true;
             this.Close();
             return;
         }

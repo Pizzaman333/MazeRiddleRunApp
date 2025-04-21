@@ -3,6 +3,7 @@
     x:Class="RiddleMazeRun.MyWindows.AuthWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:RiddleMazeRun.Controls"
     xmlns:local="using:RiddleMazeRun.MyWindows"
     xmlns:local1="using:RiddleMazeRun.CustomElements"
     Title="AuthWindow">
@@ -475,5 +476,6 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
+        <controls:ConfirmExitControl x:Name="ConfirmExitControl" />
     </Grid>
 </Window>

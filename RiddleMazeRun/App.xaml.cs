@@ -27,12 +27,9 @@ public partial class App : Application
         authWindow.Activate();
         authWindow.ExtendsContentIntoTitleBar = true;
 
-        //authWindow.AuthSuccess += (sender, e) =>
-        //{
-        //    var mainWindow = new MainWindow();
-        //    mainWindow.Activate();
-        //    authWindow.Close();
-        //};
+        //var mainWindow = new MainWindow();
+        //mainWindow.Activate();
+        //mainWindow.ExtendsContentIntoTitleBar = true;
     }
 
     private Window? m_window;

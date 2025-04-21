@@ -22,7 +22,13 @@
     <None Remove="Assets\Fonts\NotoSerif-ExtraBold.ttf" />
     <None Remove="Assets\Fonts\NotoSerif-Regular.ttf" />
     <None Remove="Assets\logo_min_high.scale-100.png" />
-    <None Remove="Gradients\BgGradient.xaml" />
+    <None Remove="Controls\ConfirmExitControl.xaml" />
+    <None Remove="Gradients\BgGradientCircular.xaml" />
+    <None Remove="Pages\AboutPage.xaml" />
+    <None Remove="Pages\HelpPage.xaml" />
+    <None Remove="Pages\HowToPlayPage.xaml" />
+    <None Remove="Pages\MainGamePage.xaml" />
+    <None Remove="Pages\SettingsPage.xaml" />
     <None Remove="Styles\BtnStyle.xaml" />
     <None Remove="Styles\ColorsDark.xaml" />
     <None Remove="Styles\GridStyle.xaml" />
@@ -109,9 +115,47 @@
     <Content Update="Assets\Fonts\NotoSerif-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\MainLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Gradients\BgGradient.xaml">
+    <Page Update="Pages\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\HelpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\HowToPlayPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\MainGamePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ConfirmExitControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Gradients\BgGradientCircular.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Gradients\BgGradientLinear.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -4,4 +4,5 @@
     <Color x:Key="HighlightColor">#DA291C</Color>
     <Color x:Key="DarkHighlightColor">#310b0b</Color>
     <Color x:Key="HoverColor">#f4eded</Color>
+    <Color x:Key="SubTextColor">#989090</Color>
 </ResourceDictionary>

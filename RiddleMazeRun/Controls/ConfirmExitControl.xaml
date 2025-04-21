@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl
+    x:Class="RiddleMazeRun.Controls.ConfirmExitControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:RiddleMazeRun.Controls"
+    xmlns:local1="using:RiddleMazeRun.CustomElements"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="Root"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Storyboard x:Name="FadeInStoryboard">
+            <DoubleAnimation
+                Storyboard.TargetName="Root"
+                Storyboard.TargetProperty="Opacity"
+                To="1"
+                Duration="0:0:0.3" />
+        </Storyboard>
+
+        <Storyboard x:Name="FadeOutStoryboard">
+            <DoubleAnimation
+                Storyboard.TargetName="Root"
+                Storyboard.TargetProperty="Opacity"
+                To="0"
+                Duration="0:0:0.3" />
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Column="0" Fill="Black" Opacity="0.5"/>
+        <Grid
+            Grid.Column="0"
+            Width="475"
+            Height="275"
+            Margin="0">
+
+            <!--  Shadow  -->
+            <Grid x:Name="ShadowHost" />
+
+            <StackPanel
+                Width="450"
+                Height="250"
+                Background="{StaticResource BgLightCircularGradientBrush}"
+                CornerRadius="20"
+                Spacing="20">
+
+                <TextBlock
+                    Margin="0,50,0,0"
+                    FontFamily="ms-appx:///Assets/Fonts/NotoSerif-Regular.ttf#Noto Serif"
+                    FontSize="48"
+                    Foreground="{ThemeResource HoverColor}"
+                    Text="Are you sure?"
+                    TextAlignment="Center" />
+
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="50">
+                    <local1:ButtonWithHover
+                        Width="150"
+                        Height="40"
+                        HorizontalAlignment="Center"
+                        Click="ExitButton_Click"
+                        Content="Yes, exit"
+                        CornerRadius="7"
+                        FontSize="20"
+                        Style="{ThemeResource StandartButtonStyle}" />
+                    <local1:ButtonWithHover
+                        Width="150"
+                        Height="40"
+                        HorizontalAlignment="Center"
+                        Click="StayButton_Click"
+                        Content="No, stay"
+                        CornerRadius="7"
+                        FontSize="20"
+                        Style="{ThemeResource StandartButtonStyle}" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
