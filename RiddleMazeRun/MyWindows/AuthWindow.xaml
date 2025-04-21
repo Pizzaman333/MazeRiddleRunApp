@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="RiddleMazeRun.MyWindows.AuthWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RiddleMazeRun.MyWindows"
+    xmlns:local1="using:RiddleMazeRun.CustomElements"
+    Title="AuthWindow">
+
+    <Grid x:Name="AuthGrid">
+        <Grid.Resources>
+            <Storyboard x:Name="LogInActive">
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="-110"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="SignInTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="20"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="GuestTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="20"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="ExitTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="20"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="ToggleTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="20"
+                    Duration="0:0:0.5" />
+            </Storyboard>
+
+            <Storyboard x:Name="SignInActive">
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="170"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="SignInTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="-170"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="GuestTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="110"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="ExitTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="110"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="ToggleTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="110"
+                    Duration="0:0:0.5" />
+            </Storyboard>
+
+            <Storyboard x:Name="InputsFadeIn">
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInForm"
+                    Storyboard.TargetProperty="Opacity"
+                    To="1"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+
+            <Storyboard x:Name="InputsFadeOut">
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInForm"
+                    Storyboard.TargetProperty="Opacity"
+                    To="0"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+
+            <Storyboard x:Name="RegInputsFadeIn">
+                <DoubleAnimation
+                    Storyboard.TargetName="SignUpForm"
+                    Storyboard.TargetProperty="Opacity"
+                    To="1"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+
+            <Storyboard x:Name="RegInputsFadeOut">
+                <DoubleAnimation
+                    Storyboard.TargetName="SignUpForm"
+                    Storyboard.TargetProperty="Opacity"
+                    To="0"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+
+            <Storyboard x:Name="MoveAllUp">
+                <DoubleAnimation
+                    Storyboard.TargetName="WelcomeTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="-70"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="WelcomeLogoTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="-70"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="AuthorizeTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="-70"
+                    Duration="0:0:0.5" />
+            </Storyboard>
+
+            <Storyboard x:Name="LogInEmailError">
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInEmailErrorTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="40"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInPasswordTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="20"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInPasswordErrorTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="30"
+                    Duration="0:0:0.5" />
+            </Storyboard>
+
+            <Storyboard x:Name="LogInEmailNoError">
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInEmailErrorTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="0"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInPasswordTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="0"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInPasswordErrorTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="10"
+                    Duration="0:0:0.5" />
+            </Storyboard>
+
+            <Storyboard x:Name="LogInPasswordError">
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInPasswordErrorTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="50"
+                    Duration="0:0:0.5" />
+            </Storyboard>
+
+            <local:VisibilityConverter x:Key="VisibilityConverter" />
+
+            <Style x:Key="CustomTextBoxStyle" TargetType="TextBox">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBox">
+                            <Grid>
+                                <!--  Background  -->
+                                <Border x:Name="Border" CornerRadius="7">
+                                    <Border.Background>
+                                        <SolidColorBrush x:Name="ButtonBrush" Color="#101820" />
+                                    </Border.Background>
+                                </Border>
+
+                                <!--  Content Presenter (Handles Text & Placeholder)  -->
+                                <ContentPresenter
+                                    x:Name="Placeholder"
+                                    Margin="10,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding PlaceholderText}"
+                                    FontSize="18"
+                                    Foreground="#999999"
+                                    Visibility="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource VisibilityConverter}}" />
+                                <!--  Actual Text Input  -->
+                                <ScrollViewer
+                                    x:Name="ContentElement"
+                                    Margin="10,7,0,0"
+                                    Foreground="{ThemeResource HoverColor}" />
+
+                                <!--  VisualStateManager for Focus Handling  -->
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <!--  Normal State  -->
+                                        <VisualState x:Name="Normal">
+                                            <Storyboard>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="ButtonBrush"
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="#101820"
+                                                    Duration="0:0:0.3" />
+                                            </Storyboard>
+                                        </VisualState>
+
+                                        <!--  Focused State  -->
+                                        <VisualState x:Name="Focused">
+                                            <Storyboard>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="ButtonBrush"
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="#080b0f"
+                                                    Duration="0:0:0.3" />
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
+            <TextBlock
+                Margin="0,0,0,10"
+                FontFamily="ms-appx:///Assets/Fonts/NotoSerif-Bold.ttf#Noto Serif"
+                FontSize="40"
+                Foreground="{ThemeResource HoverColor}"
+                Text="WELCOME TO"
+                TextAlignment="Center">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform x:Name="WelcomeTransform" />
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <Image Width="400" Source="/Assets/AuthImage.png">
+                <Image.RenderTransform>
+                    <TranslateTransform x:Name="WelcomeLogoTransform" />
+                </Image.RenderTransform>
+            </Image>
+            <TextBlock
+                x:Name="PleaseAuthText"
+                Margin="0,15,0,0"
+                FontFamily="ms-appx:///Assets/Fonts/NotoSerif-Regular.ttf#Noto Serif"
+                FontSize="24"
+                Foreground="{ThemeResource HoverColor}"
+                Text="Please authorize"
+                TextAlignment="Center">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform x:Name="AuthorizeTransform" />
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel
+                    x:Name="LogInForm"
+                    Grid.Column="0"
+                    Margin="0,-290,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Opacity="0"
+                    Orientation="Vertical"
+                    Visibility="Collapsed">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            FontSize="16"
+                            Foreground="{ThemeResource HoverColor}"
+                            Text="Please enter a valid email!">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform x:Name="LogInEmailErrorTransform" />
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBox
+                            x:Name="LogInEmailTextBox"
+                            Grid.Column="0"
+                            Width="280"
+                            Height="38"
+                            FontSize="18"
+                            MaxLength="27"
+                            PlaceholderText="Email"
+                            Style="{StaticResource CustomTextBoxStyle}"
+                            TabIndex="2" />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            x:Name="LogInPasswordErrorText"
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            FontSize="16"
+                            Foreground="{ThemeResource HoverColor}"
+                            Text="Error">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform x:Name="LogInPasswordErrorTransform" Y="10" />
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBox
+                            x:Name="LogInPasswordTextBox"
+                            Width="280"
+                            Height="38"
+                            Margin="0,10,0,0"
+                            FontSize="18"
+                            MaxLength="27"
+                            PlaceholderText="Password"
+                            Style="{StaticResource CustomTextBoxStyle}"
+                            TabIndex="3">
+                            <TextBox.RenderTransform>
+                                <TranslateTransform x:Name="LogInPasswordTransform" />
+                            </TextBox.RenderTransform>
+                        </TextBox>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel
+                    x:Name="SignUpForm"
+                    Grid.Column="0"
+                    Margin="0,-195,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Opacity="0"
+                    Orientation="Vertical"
+                    Visibility="Collapsed">
+                    <TextBox
+                        Width="280"
+                        Height="38"
+                        FontSize="18"
+                        MaxLength="27"
+                        PlaceholderText="Username"
+                        Style="{StaticResource CustomTextBoxStyle}"
+                        TabIndex="5" />
+                    <TextBox
+                        Width="280"
+                        Height="38"
+                        Margin="0,10,0,0"
+                        FontSize="18"
+                        MaxLength="27"
+                        PlaceholderText="Email"
+                        Style="{StaticResource CustomTextBoxStyle}"
+                        TabIndex="6" />
+                    <TextBox
+                        Width="280"
+                        Height="38"
+                        Margin="0,10,0,0"
+                        FontSize="18"
+                        MaxLength="27"
+                        PlaceholderText="Password"
+                        Style="{StaticResource CustomTextBoxStyle}"
+                        TabIndex="7" />
+                    <TextBox
+                        Width="280"
+                        Height="38"
+                        Margin="0,10,0,0"
+                        FontSize="18"
+                        MaxLength="27"
+                        PlaceholderText="Repeat Password"
+                        Style="{StaticResource CustomTextBoxStyle}"
+                        TabIndex="8" />
+
+                    <!--<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="70,9,0,0"
+                            FontSize="18"
+                            Foreground="{ThemeResource HoverColor}"
+                            Text="Light theme" />
+                        <ToggleSwitch
+                            x:Name="ThemeToggle"
+                            Margin="20,0,0,0"
+                            Foreground="{ThemeResource HoverColor}"
+                            Toggled="ThemeToggle_Toggled" />
+                    </StackPanel>-->
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <local1:ButtonWithHover
+                        x:Name="LogInBtn"
+                        Width="300"
+                        Height="40"
+                        Margin="0,15,0,0"
+                        HorizontalAlignment="Center"
+                        Click="LoginButton_Click"
+                        Content="Log in"
+                        FontSize="20"
+                        Style="{StaticResource StandartButtonStyle}"
+                        TabIndex="1"
+                        UseSystemFocusVisuals="False">
+                        <local1:ButtonWithHover.RenderTransform>
+                            <TranslateTransform x:Name="LogInTransform" />
+                        </local1:ButtonWithHover.RenderTransform>
+                    </local1:ButtonWithHover>
+                    <local1:ButtonWithHover
+                        x:Name="SignUpBtn"
+                        Width="300"
+                        Height="40"
+                        Margin="0,20,0,0"
+                        HorizontalAlignment="Center"
+                        Click="SignInButton_Click"
+                        Content="Sign up"
+                        FontSize="20"
+                        Style="{StaticResource StandartButtonStyle}"
+                        TabIndex="4"
+                        UseSystemFocusVisuals="False">
+                        <local1:ButtonWithHover.RenderTransform>
+                            <TranslateTransform x:Name="SignInTransform" />
+                        </local1:ButtonWithHover.RenderTransform>
+                    </local1:ButtonWithHover>
+                    <local1:ButtonWithHover
+                        x:Name="GuestBtn"
+                        Width="300"
+                        Height="40"
+                        Margin="0,20,0,0"
+                        HorizontalAlignment="Center"
+                        Content="Continue as guest"
+                        FontSize="20"
+                        Style="{StaticResource StandartButtonStyle}"
+                        TabIndex="10"
+                        UseSystemFocusVisuals="False">
+                        <local1:ButtonWithHover.RenderTransform>
+                            <TranslateTransform x:Name="GuestTransform" />
+                        </local1:ButtonWithHover.RenderTransform>
+                    </local1:ButtonWithHover>
+                    <local1:ButtonWithHover
+                        x:Name="ExitBtn"
+                        Width="300"
+                        Height="40"
+                        Margin="0,20,0,0"
+                        HorizontalAlignment="Center"
+                        Click="ExitButton_Click"
+                        Content="Exit"
+                        FontSize="20"
+                        Style="{StaticResource StandartButtonStyle}"
+                        TabIndex="11"
+                        UseSystemFocusVisuals="False">
+                        <local1:ButtonWithHover.RenderTransform>
+                            <TranslateTransform x:Name="ExitTransform" />
+                        </local1:ButtonWithHover.RenderTransform>
+                    </local1:ButtonWithHover>
+                    <StackPanel
+                        Padding="0,10,0,0"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            Margin="8,9,0,0"
+                            FontSize="18"
+                            Foreground="{ThemeResource HoverColor}"
+                            Text="Dark theme" />
+                        <ToggleSwitch
+                            x:Name="ThemeToggle"
+                            Margin="14,0,0,0"
+                            FontSize="18"
+                            Foreground="{ThemeResource HoverColor}"
+                            OffContent="Light theme"
+                            OnContent="Light theme"
+                            Toggled="ThemeToggle_Toggled" />
+                        <StackPanel.RenderTransform>
+                            <TranslateTransform x:Name="ToggleTransform" />
+                        </StackPanel.RenderTransform>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

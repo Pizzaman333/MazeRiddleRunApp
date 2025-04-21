@@ -123,4 +123,7 @@
   <data name="PauseText" xml:space="preserve">
     <value>Game paused</value>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value>Text</value>
+  </data>
 </root>

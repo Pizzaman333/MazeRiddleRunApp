@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="StandartButtonStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border x:Name="ButtonBase" CornerRadius="7">
+                            <Border.Background>
+                                <SolidColorBrush x:Name="ButtonBrush" Color="{ThemeResource HighlightColor}" />
+                            </Border.Background>
+                        </Border>
+
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter.Foreground>
+                                <SolidColorBrush x:Name="TextBrush" Color="{ThemeResource HoverColor}" />
+                            </ContentPresenter.Foreground>
+                        </ContentPresenter>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="ButtonBrush"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{ThemeResource HighlightColor}"
+                                            Duration="0:0:0.3" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="TextBrush"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{ThemeResource HoverColor}"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="ButtonBrush"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{ThemeResource HoverColor}"
+                                            Duration="0:0:0.3" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="TextBrush"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{ThemeResource HighlightColor}"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="ButtonBrush"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{ThemeResource HoverColor}"
+                                            Duration="0:0:0.3" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="TextBrush"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{ThemeResource HighlightColor}"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </VisualState>
+
+                                <!--<VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="ButtonBrush"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{ThemeResource HighlightColor}"
+                                            Duration="0:0:0.3" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="TextBrush"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{ThemeResource HoverColor}"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </VisualState>-->
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -11,8 +11,10 @@
                 <!--  Other merged dictionaries here  -->
                 <ResourceDictionary Source="/Styles/GridStyle.xaml" />
                 <ResourceDictionary Source="/Styles/StackPanelStyle.xaml" />
-                <ResourceDictionary Source="/Styles/ButtonStyle.xaml" />
-                <ResourceDictionary Source="/Styles/ResourceDictionary1.xaml" />
+                <ResourceDictionary Source="/Styles/BtnStyle.xaml" />
+                <ResourceDictionary Source="/Gradients/BgGradient.xaml" />
+                <!--<ResourceDictionary Source="/Colors/ColorsLight.xaml" />
+                <ResourceDictionary Source="/Colors/ColorsDark.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
             <!--  Other app resources here  -->
             <ResourceDictionary.ThemeDictionaries>

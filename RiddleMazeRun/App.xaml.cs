@@ -1,5 +1,5 @@
 ﻿using Microsoft.UI.Xaml;
-using RiddleMazeRun.Windows;
+using RiddleMazeRun.MyWindows;
 
 namespace RiddleMazeRun;
 

@@ -123,4 +123,7 @@
   <data name="PauseText" xml:space="preserve">
     <value>Гру зупинено</value>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value>Текст</value>
+  </data>
 </root>

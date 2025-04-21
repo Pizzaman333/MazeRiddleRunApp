@@ -183,7 +183,7 @@
             Opacity="0.5" />
 
 
-        <StackPanel
+        <!--<StackPanel
             Grid.Row="1"
             Grid.RowSpan="12"
             Grid.Column="4"
@@ -341,8 +341,8 @@
                         Text="Exit" />
                 </Grid>
             </Button>
-        </StackPanel>
-
+        </StackPanel>-->
+<TextBlock Text="Main Window" />
       
     </Grid>
 

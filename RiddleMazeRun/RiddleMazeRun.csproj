@@ -13,16 +13,23 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\logo-min.svg" />
     <Content Remove="Assets\panel-logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Styles\ButtonStyle.xaml" />
+    <None Remove="Assets\AuthImage.png" />
+    <None Remove="Assets\Fonts\NotoSerif-Bold.ttf" />
+    <None Remove="Assets\Fonts\NotoSerif-ExtraBold.ttf" />
+    <None Remove="Assets\Fonts\NotoSerif-Regular.ttf" />
+    <None Remove="Assets\logo_min_high.scale-100.png" />
+    <None Remove="Gradients\BgGradient.xaml" />
+    <None Remove="Styles\BtnStyle.xaml" />
+    <None Remove="Styles\ColorsDark.xaml" />
     <None Remove="Styles\GridStyle.xaml" />
-    <None Remove="Styles\ResourceDictionary1.xaml" />
     <None Remove="Styles\StackPanelStyle.xaml" />
     <None Remove="Themes\Dark.xaml" />
     <None Remove="Themes\Light.xaml" />
-    <None Remove="Windows\AuthWindow.xaml" />
+    <None Remove="MyWindows\AuthWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,12 +58,12 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250401001" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Styles\ResourceDictionary1.xaml">
+    <Page Update="Styles\ColorsDark.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Styles\ButtonStyle.xaml">
+    <Page Update="Styles\ColorsLight.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -82,6 +89,34 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Windows\AuthWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Colors\" />
+    <Folder Include="UserControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Assets\AuthImage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Fonts\NotoSerif-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Fonts\NotoSerif-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Fonts\NotoSerif-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Gradients\BgGradient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Styles\BtnStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
