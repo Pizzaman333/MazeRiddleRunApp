@@ -1,5 +1,4 @@
 ﻿using Microsoft.UI.Xaml;
-using RiddleMazeRun.MyWindows;
 
 namespace RiddleMazeRun;
 
@@ -23,13 +22,13 @@ public partial class App : Application
     /// <param name="args">Details about the launch request and process.</param>
     protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
     {
-        var authWindow = new AuthWindow();
-        authWindow.Activate();
-        authWindow.ExtendsContentIntoTitleBar = true;
+        //var authWindow = new AuthWindow();
+        //authWindow.Activate();
+        //authWindow.ExtendsContentIntoTitleBar = true;
 
-        //var mainWindow = new MainWindow();
-        //mainWindow.Activate();
-        //mainWindow.ExtendsContentIntoTitleBar = true;
+        var mainWindow = new MainWindow();
+        mainWindow.Activate();
+        mainWindow.ExtendsContentIntoTitleBar = true;
     }
 
     private Window? m_window;

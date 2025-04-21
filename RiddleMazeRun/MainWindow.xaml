@@ -8,172 +8,52 @@
     xmlns:local1="using:RiddleMazeRun.CustomElements"
     Title="RiddleMazeRun">
 
-    <Grid x:Name="MainGrid" Style="{ThemeResource Bg-Grid}">
-        <!--<Grid.Resources>
-            <Storyboard x:Name="ConfirmExitControlFadeIn">
+    <Grid x:Name="MainGrid">
+        <Grid.Resources>
+            <Storyboard x:Name="PauseBtnFadeIn">
                 <DoubleAnimation
-                    Storyboard.TargetName="ConfirmExitControl"
-                    Storyboard.TargetProperty="Opacity"
-                    To="1"
+                    Storyboard.TargetName="PauseBtnTransform"
+                    Storyboard.TargetProperty="X"
+                    To="0"
                     Duration="0:0:0.25" />
-            </Storyboard>
-            <Storyboard x:Name="ConfirmExitControlFadeOut">
                 <DoubleAnimation
-                    Storyboard.TargetName="ConfirmExitControl"
-                    Storyboard.TargetProperty="Opacity"
+                    Storyboard.TargetName="PauseBtnTransform"
+                    Storyboard.TargetProperty="Y"
                     To="0"
                     Duration="0:0:0.25" />
             </Storyboard>
-        </Grid.Resources>-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <StackPanel
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            CornerRadius="15"
-            Orientation="Vertical">
-            <Image Width="200" Source="/Assets/MainLogo.png" />
-            <local1:ButtonWithHover
-                Width="300"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                CornerRadius="7"
-                Style="{ThemeResource StandartButtonStyle}">
-                <Grid Width="275">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <FontIcon
-                        Grid.Column="0"
-                        FontSize="20"
-                        Glyph="&#xE7FC;" />
-                    <TextBlock
-                        Grid.Column="2"
-                        FontSize="20"
-                        Text="Play" />
-                </Grid>
-            </local1:ButtonWithHover>
-            <local1:ButtonWithHover
-                Width="300"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                CornerRadius="7"
-                Style="{ThemeResource StandartButtonStyle}">
-                <Grid Width="275">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <FontIcon
-                        Grid.Column="0"
-                        FontSize="20"
-                        Glyph="&#xE713;" />
-                    <TextBlock
-                        Grid.Column="2"
-                        FontSize="20"
-                        Text="Settings" />
-                </Grid>
-            </local1:ButtonWithHover>
-            <local1:ButtonWithHover
-                Width="300"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                CornerRadius="7"
-                Style="{ThemeResource StandartButtonStyle}">
-                <Grid Width="275">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <FontIcon
-                        Grid.Column="0"
-                        FontSize="20"
-                        Glyph="&#xEA80;" />
-                    <TextBlock
-                        Grid.Column="2"
-                        FontSize="20"
-                        Text="How to play" />
-                </Grid>
-            </local1:ButtonWithHover>
-            <local1:ButtonWithHover
-                Width="300"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                CornerRadius="7"
-                Style="{ThemeResource StandartButtonStyle}">
-                <Grid Width="275">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <FontIcon
-                        Grid.Column="0"
-                        FontSize="20"
-                        Glyph="&#xE9CE;" />
-                    <TextBlock
-                        Grid.Column="2"
-                        FontSize="20"
-                        Text="Help" />
-                </Grid>
-            </local1:ButtonWithHover>
-            <local1:ButtonWithHover
-                Width="300"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                CornerRadius="7"
-                Style="{ThemeResource StandartButtonStyle}">
-                <Grid Width="275">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <FontIcon
-                        Grid.Column="0"
-                        FontSize="20"
-                        Glyph="&#xF000;" />
-                    <TextBlock
-                        Grid.Column="2"
-                        FontSize="20"
-                        Text="About the game" />
-                </Grid>
-            </local1:ButtonWithHover>
-            <local1:ButtonWithHover
-                Width="300"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                Click="ExitButton_Click"
-                CornerRadius="7"
-                Style="{ThemeResource StandartButtonStyle}">
-                <Grid Width="275">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <FontIcon
-                        Grid.Column="0"
-                        FontSize="20"
-                        Glyph="&#xE711;" />
-                    <TextBlock
-                        Grid.Column="2"
-                        FontSize="20"
-                        Text="Exit" />
-                </Grid>
-            </local1:ButtonWithHover>
-        </StackPanel>
-        <controls:ConfirmExitControl x:Name="ConfirmExitControl"/>
+
+            <Storyboard x:Name="PauseBtnFadeOut">
+                <DoubleAnimation
+                    Storyboard.TargetName="PauseBtnTransform"
+                    Storyboard.TargetProperty="X"
+                    To="-70"
+                    Duration="0:0:0.25" />
+                <DoubleAnimation
+                    Storyboard.TargetName="PauseBtnTransform"
+                    Storyboard.TargetProperty="Y"
+                    To="-90"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+        </Grid.Resources>
+
+        <Frame x:Name="MainFrame" />
+
+        <local1:ButtonWithHover
+            x:Name="PauseMenuBtn"
+            Width="45"
+            Height="45"
+            Margin="20,40,0,0"
+            Padding="5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="PauseMenuBtn_Click"
+            Style="{ThemeResource StandartButtonStyle}">
+            <FontIcon FontSize="30" Glyph="&#xE830;" />
+            <local1:ButtonWithHover.RenderTransform>
+                <TranslateTransform x:Name="PauseBtnTransform" X="-70" Y="-90" />
+            </local1:ButtonWithHover.RenderTransform>
+        </local1:ButtonWithHover>
+        <controls:ConfirmExitControl x:Name="ConfirmExitControl" />
     </Grid>
 </Window>

@@ -28,6 +28,7 @@
     <None Remove="Pages\HelpPage.xaml" />
     <None Remove="Pages\HowToPlayPage.xaml" />
     <None Remove="Pages\MainGamePage.xaml" />
+    <None Remove="Pages\MainMenuPage.xaml" />
     <None Remove="Pages\SettingsPage.xaml" />
     <None Remove="Styles\BtnStyle.xaml" />
     <None Remove="Styles\ColorsDark.xaml" />
@@ -118,6 +119,11 @@
     <Content Update="Assets\MainLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\MainMenuPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\AboutPage.xaml">
