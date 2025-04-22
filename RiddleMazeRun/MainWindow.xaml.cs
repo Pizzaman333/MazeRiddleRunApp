@@ -4,7 +4,10 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
+using RiddleMazeRun.Controls;
+using RiddleMazeRun.Helpers;
 using RiddleMazeRun.Pages;
+using RiddleMazeRun.Services;
 using System;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -28,26 +31,23 @@ public sealed partial class MainWindow : Window
 
         appWindow.Closing += AppWindow_Closing;
 
-        //var menu = new MainMenuPage();
-        menu.NavigationRequested += page => NavigateWithExitEffect(page);
-        NavigateToWithStyle(menu);
-
-        //var brush = (RadialGradientBrush)Application.Current.Resources["BgCircularGradientBrush"];
-        //MainGrid.Background = brush;
+        //menu.NavigationRequested += page => NavigateWithExitEffect(page);
+        menu.NavigationRequested += page =>
+        {
+            NavigateTo(page);
+            UIHelper.RefreshAllButtons(MainGrid);
+        };
+        NavigateTo(menu);
     }
 
     public async void NavigateTo(Page page)
     {
-        // Set opacity to 0 to start the fade-in
         page.Opacity = 0;
 
-        // Assign the page to the frame
         MainFrame.Content = page;
 
-        // Let the UI thread update so the page is "loaded" before animating
         await Task.Delay(10);
 
-        // Animate opacity from 0 to 1
         var fadeIn = new DoubleAnimation
         {
             From = 0,
@@ -55,16 +55,43 @@ public sealed partial class MainWindow : Window
             Duration = new Duration(TimeSpan.FromMilliseconds(250)),
             EasingFunction = new SineEase { EasingMode = EasingMode.EaseInOut }
         };
-
         Storyboard.SetTarget(fadeIn, page);
         Storyboard.SetTargetProperty(fadeIn, "Opacity");
-
         var sb = new Storyboard();
         sb.Children.Add(fadeIn);
         sb.Begin();
 
-        if (page is MainMenuPage) return;
-        PauseBtnFadeIn.Begin();
+        if (page is not MainMenuPage)
+        {
+            PauseBtnFadeIn.Begin();
+        }
+
+        if (page is SettingsPage settingsPage)
+        {
+            settingsPage.ThemeChangeRequested += ThemeControl_ThemeChangeRequested;
+        }
+
+        UIHelper.RefreshAllButtons(MainGrid);
+    }
+
+    //private void ThemeControl_ThemeChangeRequested(object? sender, ThemeChangeRequestedEventArgs e)
+    //{
+    //    MainGrid.RequestedTheme = e.RequestedThemeIsLight ? ElementTheme.Light : ElementTheme.Dark;
+    //    RefreshButtonState(PauseMenuBtn);
+    //}
+
+    private void ThemeControl_ThemeChangeRequested(object? sender, ThemeChangeRequestedEventArgs e)
+    {
+        var newTheme = e.RequestedThemeIsLight ? ElementTheme.Light : ElementTheme.Dark;
+
+        AppSettings.Current.CurrentTheme = newTheme;
+
+        MainGrid.RequestedTheme = newTheme;
+        UIHelper.RefreshAllButtons(MainGrid);
+        //if (MainFrame.Content is FrameworkElement currentPage)
+        //{
+        //    UIHelper.RefreshBackgrounds(currentPage, "BgLinearGradientBrush");
+        //}
     }
 
     public async void NavigateToWithStyle(Page page)
@@ -323,8 +350,6 @@ public sealed partial class MainWindow : Window
         PauseBtnFadeIn.Begin();
     }
 
-
-
     private void AppWindow_Closing(AppWindow sender, AppWindowClosingEventArgs args)
     {
         if (ConfirmExitControl.Opacity != 0) return;
@@ -335,8 +360,10 @@ public sealed partial class MainWindow : Window
     private async void PauseMenuBtn_Click(object sender, RoutedEventArgs e)
     {
         //NavigateWithVortexEffect(menu);
-        NavigateWithExitEffect(menu);
+        //NavigateWithExitEffect(menu);
+        NavigateTo(menu);
         PauseBtnFadeOut.Begin();
+        UIHelper.RefreshAllButtons(MainGrid);
     }
 
     //private void ThemeToggle_Toggled(object sender, RoutedEventArgs e)

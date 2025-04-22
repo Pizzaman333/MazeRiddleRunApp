@@ -8,7 +8,7 @@
     xmlns:local1="using:RiddleMazeRun.CustomElements"
     Title="RiddleMazeRun">
 
-    <Grid x:Name="MainGrid">
+    <Grid x:Name="MainGrid" >
         <Grid.Resources>
             <Storyboard x:Name="PauseBtnFadeIn">
                 <DoubleAnimation
@@ -41,15 +41,15 @@
 
         <local1:ButtonWithHover
             x:Name="PauseMenuBtn"
-            Width="45"
-            Height="45"
+            Width="43"
+            Height="43"
             Margin="20,40,0,0"
             Padding="5"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="PauseMenuBtn_Click"
             Style="{ThemeResource StandartButtonStyle}">
-            <FontIcon FontSize="30" Glyph="&#xE830;" />
+            <FontIcon FontSize="28" Glyph="&#xE830;" />
             <local1:ButtonWithHover.RenderTransform>
                 <TranslateTransform x:Name="PauseBtnTransform" X="-70" Y="-90" />
             </local1:ButtonWithHover.RenderTransform>

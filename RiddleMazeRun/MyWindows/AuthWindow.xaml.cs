@@ -1,22 +1,18 @@
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
+using RiddleMazeRun.Controls;
+using RiddleMazeRun.Helpers;
+using RiddleMazeRun.Services;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace RiddleMazeRun.MyWindows;
 
-/// <summary>
-/// An empty window that can be used on its own or navigated to within a Frame.
-/// </summary>
 public sealed partial class AuthWindow : Window
 {
     public AuthWindow()
@@ -35,7 +31,24 @@ public sealed partial class AuthWindow : Window
         var appWindow = AppWindow.GetFromWindowId(windowId);
 
         appWindow.Closing += AppWindow_Closing;
+
+        ThemeChangerControl.ThemeChangeRequested += ThemeControl_ThemeChangeRequested;
+        ThemeChangerControl.SetToggleState(AppSettings.Current.CurrentTheme == ElementTheme.Light);
     }
+
+    private void ThemeControl_ThemeChangeRequested(object? sender, ThemeChangeRequestedEventArgs e)
+    {
+        var newTheme = e.RequestedThemeIsLight ? ElementTheme.Light : ElementTheme.Dark;
+
+        AppSettings.Current.CurrentTheme = newTheme; // This saves and notifies
+
+        AuthGrid.RequestedTheme = newTheme;
+        UIHelper.RefreshAllButtons(AuthGrid);
+
+        var brush = (LinearGradientBrush)Application.Current.Resources["BgLinearGradientBrush"];
+        AuthGrid.Background = brush;
+    }
+
 
     private void AppWindow_Closing(AppWindow sender, AppWindowClosingEventArgs args)
     {
@@ -112,6 +125,10 @@ public sealed partial class AuthWindow : Window
             //}
 
             var mainWindow = new MainWindow();
+            if (mainWindow.Content is FrameworkElement rootElement)
+            {
+                rootElement.RequestedTheme = AppSettings.Current.CurrentTheme;
+            }
             mainWindow.Activate();
             mainWindow.ExtendsContentIntoTitleBar = true;
             this.Close();
@@ -190,29 +207,6 @@ public sealed partial class AuthWindow : Window
             Storyboard.SetTargetProperty(animation, "Offset");
 
             storyboard.Begin();
-        }
-    }
-
-    private void ThemeToggle_Toggled(object sender, RoutedEventArgs e)
-    {
-        AuthGrid.RequestedTheme = ThemeToggle.IsOn ? ElementTheme.Light : ElementTheme.Dark;
-        //App.Current.RequestedTheme = ApplicationTheme.Dark;
-        // Refresh button visuals
-        RefreshButtonState(LogInBtn);
-        RefreshButtonState(SignUpBtn);
-        RefreshButtonState(GuestBtn);
-        RefreshButtonState(ExitBtn);
-        var brush = (LinearGradientBrush)Application.Current.Resources["BgGradientBrush"];
-        AuthGrid.Background = brush;
-    }
-
-    // Refresh btns in visualstatemanager manually
-    private void RefreshButtonState(Control control)
-    {
-        if (control != null)
-        {
-            VisualStateManager.GoToState(control, "PointerOver", true);
-            VisualStateManager.GoToState(control, "Normal", true);
         }
     }
 }

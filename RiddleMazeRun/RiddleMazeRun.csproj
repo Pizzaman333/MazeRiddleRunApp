@@ -23,6 +23,7 @@
     <None Remove="Assets\Fonts\NotoSerif-Regular.ttf" />
     <None Remove="Assets\logo_min_high.scale-100.png" />
     <None Remove="Controls\ConfirmExitControl.xaml" />
+    <None Remove="Controls\ThemeChangerControl.xaml" />
     <None Remove="Gradients\BgGradientCircular.xaml" />
     <None Remove="Pages\AboutPage.xaml" />
     <None Remove="Pages\HelpPage.xaml" />
@@ -119,6 +120,11 @@
     <Content Update="Assets\MainLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ThemeChangerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\MainMenuPage.xaml">

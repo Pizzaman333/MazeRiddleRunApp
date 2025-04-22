@@ -174,7 +174,7 @@
                                     </Border.Background>
                                 </Border>
 
-                                <!--  Content Presenter (Handles Text & Placeholder)  -->
+                                <!--  Placeholder  -->
                                 <ContentPresenter
                                     x:Name="Placeholder"
                                     Margin="10,0,0,0"
@@ -189,10 +189,9 @@
                                     Margin="10,7,0,0"
                                     Foreground="{ThemeResource HoverColor}" />
 
-                                <!--  VisualStateManager for Focus Handling  -->
+                                <!--  Status Handling  -->
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
-                                        <!--  Normal State  -->
                                         <VisualState x:Name="Normal">
                                             <Storyboard>
                                                 <ColorAnimation
@@ -202,8 +201,6 @@
                                                     Duration="0:0:0.3" />
                                             </Storyboard>
                                         </VisualState>
-
-                                        <!--  Focused State  -->
                                         <VisualState x:Name="Focused">
                                             <Storyboard>
                                                 <ColorAnimation
@@ -452,27 +449,11 @@
                             <TranslateTransform x:Name="ExitTransform" />
                         </local1:ButtonWithHover.RenderTransform>
                     </local1:ButtonWithHover>
-                    <StackPanel
-                        Padding="0,10,0,0"
-                        HorizontalAlignment="Center"
-                        Orientation="Horizontal">
-                        <TextBlock
-                            Margin="8,9,0,0"
-                            FontSize="18"
-                            Foreground="{ThemeResource HoverColor}"
-                            Text="Dark theme" />
-                        <ToggleSwitch
-                            x:Name="ThemeToggle"
-                            Margin="14,0,0,0"
-                            FontSize="18"
-                            Foreground="{ThemeResource HoverColor}"
-                            OffContent="Light theme"
-                            OnContent="Light theme"
-                            Toggled="ThemeToggle_Toggled" />
-                        <StackPanel.RenderTransform>
+                    <controls:ThemeChangerControl x:Name="ThemeChangerControl">
+                        <controls:ThemeChangerControl.RenderTransform>
                             <TranslateTransform x:Name="ToggleTransform" />
-                        </StackPanel.RenderTransform>
-                    </StackPanel>
+                        </controls:ThemeChangerControl.RenderTransform>
+                    </controls:ThemeChangerControl>
                 </StackPanel>
             </Grid>
         </StackPanel>

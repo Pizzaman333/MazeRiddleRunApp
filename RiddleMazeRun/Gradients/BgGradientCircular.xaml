@@ -8,4 +8,12 @@
         <GradientStop Offset="0" Color="{ThemeResource SubTextColor}" />
         <GradientStop Offset="1" Color="#FF101820" />
     </RadialGradientBrush>
+    <RadialGradientBrush x:Key="DarkBgCircularGradientBrush" Center="0.5,0.5" RadiusX="0.75" RadiusY="0.75">
+        <GradientStop Offset="0" Color="#310b0b" />
+        <GradientStop Offset="1" Color="#FF101820" />
+    </RadialGradientBrush>
+    <RadialGradientBrush x:Key="LightBgCircularGradientBrush" Center="0.5,0.5" RadiusX="0.75" RadiusY="0.75">
+        <GradientStop Offset="0" Color="#0b3114" />
+        <GradientStop Offset="1" Color="#FF101820" />
+    </RadialGradientBrush>
 </ResourceDictionary>

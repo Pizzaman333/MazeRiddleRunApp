@@ -3,17 +3,35 @@
     x:Class="RiddleMazeRun.Pages.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:RiddleMazeRun.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:RiddleMazeRun.Pages"
+    xmlns:local1="using:RiddleMazeRun.CustomElements"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource BgColorBrush}">
-        <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="56"
-            Text="Settings" />
+    <Grid Background="{ThemeResource BgColorBrush}" x:Name="SettingsGrid">
+        <StackPanel Orientation="Vertical">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                FontSize="56"
+                Foreground="{ThemeResource HoverColor}"
+                Text="Settings" />
+            <local1:ButtonWithHover
+                x:Name="ExitBtn"
+                Width="300"
+                Height="40"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Content="Exit"
+                FontSize="20"
+                Style="{StaticResource StandartButtonStyle}"
+                TabIndex="11"
+                UseSystemFocusVisuals="False" />
+            <controls:ThemeChangerControl x:Name="ThemeChangerControl" />
+        </StackPanel>
     </Grid>
 </Page>

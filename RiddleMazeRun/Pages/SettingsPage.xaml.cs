@@ -1,31 +1,34 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
+using RiddleMazeRun.Controls;
+using RiddleMazeRun.Services;
+using System;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+namespace RiddleMazeRun.Pages;
 
-namespace RiddleMazeRun.Pages
+public sealed partial class SettingsPage : Page
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class SettingsPage : Page
+    public event EventHandler<ThemeChangeRequestedEventArgs>? ThemeChangeRequested;
+
+    public SettingsPage()
     {
-        public SettingsPage()
+        this.InitializeComponent();
+        ThemeChangerControl.ThemeChangeRequested += (s, e) =>
         {
-            this.InitializeComponent();
-        }
+            // Forward the event
+            ThemeChangeRequested?.Invoke(this, e);
+            //var brush = (RadialGradientBrush)Application.Current.Resources["BgCircularGradientBrush"];
+            //SettingsGrid.Background = brush;
+
+
+
+        };
+    }
+
+    private void Page_Loaded(object sender, RoutedEventArgs e)
+    {
+        //ThemeToggle.IsOn = AppSettings.Current.CurrentTheme == ElementTheme.Light;
+        ThemeChangerControl.SetToggleState(AppSettings.Current.CurrentTheme == ElementTheme.Light);
+
     }
 }
