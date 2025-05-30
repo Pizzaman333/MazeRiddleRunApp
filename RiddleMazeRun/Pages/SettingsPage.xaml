@@ -12,26 +12,60 @@
     Loaded="Page_Loaded"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource BgColorBrush}" x:Name="SettingsGrid">
-        <StackPanel Orientation="Vertical">
+    <Grid x:Name="SettingsGrid" Background="{ThemeResource BgColorBrush}">
+        <StackPanel
+            VerticalAlignment="Center"
+            Orientation="Vertical"
+            Spacing="40">
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 FontSize="56"
                 Foreground="{ThemeResource HoverColor}"
                 Text="Settings" />
-            <local1:ButtonWithHover
-                x:Name="ExitBtn"
-                Width="300"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                Content="Exit"
-                FontSize="20"
-                Style="{StaticResource StandartButtonStyle}"
-                TabIndex="11"
-                UseSystemFocusVisuals="False" />
             <controls:ThemeChangerControl x:Name="ThemeChangerControl" />
+            <StackPanel
+                Width="315"
+                Height="220"
+                Padding="0,15,0,0"
+                Background="{ThemeResource BgLightCircularGradientBrush}"
+                CornerRadius="10"
+                Orientation="Vertical"
+                Spacing="10">
+                <RadioButtons Margin="20, 10, 0, 0" Header="Select language: (comming soon)">
+                    <RadioButtons.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                FontSize="18"
+                                Foreground="{ThemeResource HoverColor}"
+                                Text="{Binding}" />
+                        </DataTemplate>
+                    </RadioButtons.HeaderTemplate>
+
+                    <RadioButton
+                        Content="Ukrainian"
+                        FontSize="24"
+                        Checked="RadioButton_Checked"
+                        Foreground="{ThemeResource HoverColor}" />
+                    <RadioButton
+                        Content="English"
+                        FontSize="24"
+                        Foreground="{ThemeResource HoverColor}"
+                        IsChecked="True" />
+                </RadioButtons>
+                <local1:ButtonWithHover
+                    x:Name="ApplyBtn"
+                    Width="300"
+                    Height="40"
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Center"
+                    Content="Aply and reload"
+                    FontSize="20"
+                    IsEnabled="False"
+                    Style="{StaticResource StandartButtonStyle}"
+                    TabIndex="11"
+                    UseSystemFocusVisuals="False" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

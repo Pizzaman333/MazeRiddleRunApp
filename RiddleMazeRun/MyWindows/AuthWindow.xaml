@@ -8,7 +8,7 @@
     xmlns:local1="using:RiddleMazeRun.CustomElements"
     Title="AuthWindow">
 
-    <Grid x:Name="AuthGrid">
+    <Grid x:Name="AuthGrid" KeyDown="AuthGrid_KeyDown">
         <Grid.Resources>
             <Storyboard x:Name="LogInActive">
                 <DoubleAnimation
@@ -116,39 +116,24 @@
                     Duration="0:0:0.5" />
             </Storyboard>
 
-            <Storyboard x:Name="LogInEmailError">
+            <Storyboard x:Name="LogInEmailErrorTranslate">
+                <DoubleAnimation
+                    Storyboard.TargetName="LogInEmailErrorTransform"
+                    Storyboard.TargetProperty="X"
+                    To="30"
+                    Duration="0:0:0.5" />
                 <DoubleAnimation
                     Storyboard.TargetName="LogInEmailErrorTransform"
                     Storyboard.TargetProperty="Y"
-                    To="40"
-                    Duration="0:0:0.5" />
-                <DoubleAnimation
-                    Storyboard.TargetName="LogInPasswordTransform"
-                    Storyboard.TargetProperty="Y"
-                    To="20"
-                    Duration="0:0:0.5" />
-                <DoubleAnimation
-                    Storyboard.TargetName="LogInPasswordErrorTransform"
-                    Storyboard.TargetProperty="Y"
-                    To="30"
+                    To="90"
                     Duration="0:0:0.5" />
             </Storyboard>
 
-            <Storyboard x:Name="LogInEmailNoError">
+            <Storyboard x:Name="LogInEmailNoErrorTranslate">
                 <DoubleAnimation
                     Storyboard.TargetName="LogInEmailErrorTransform"
-                    Storyboard.TargetProperty="Y"
+                    Storyboard.TargetProperty="X"
                     To="0"
-                    Duration="0:0:0.5" />
-                <DoubleAnimation
-                    Storyboard.TargetName="LogInPasswordTransform"
-                    Storyboard.TargetProperty="Y"
-                    To="0"
-                    Duration="0:0:0.5" />
-                <DoubleAnimation
-                    Storyboard.TargetName="LogInPasswordErrorTransform"
-                    Storyboard.TargetProperty="Y"
-                    To="10"
                     Duration="0:0:0.5" />
             </Storyboard>
 
@@ -158,6 +143,64 @@
                     Storyboard.TargetProperty="Y"
                     To="50"
                     Duration="0:0:0.5" />
+            </Storyboard>
+
+            <Storyboard x:Name="RegisterUsernameErrorTranslate">
+                <DoubleAnimation
+                    Storyboard.TargetName="RegisterUsernameErrorTransform"
+                    Storyboard.TargetProperty="X"
+                    To="290"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+            <Storyboard x:Name="RegisterEmailErrorTranslate">
+                <DoubleAnimation
+                    Storyboard.TargetName="RegisterEmailErrorTransform"
+                    Storyboard.TargetProperty="X"
+                    To="290"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+            <Storyboard x:Name="RegisterPasswordErrorTranslate">
+                <DoubleAnimation
+                    Storyboard.TargetName="RegisterPasswordErrorTransform"
+                    Storyboard.TargetProperty="X"
+                    To="290"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+            <Storyboard x:Name="RegisterRepeatPasswordErrorTranslate">
+                <DoubleAnimation
+                    Storyboard.TargetName="RegisterRepeatPasswordErrorTransform"
+                    Storyboard.TargetProperty="X"
+                    To="290"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+
+            <Storyboard x:Name="RegisterUsernameNoErrorTranslate">
+                <DoubleAnimation
+                    Storyboard.TargetName="RegisterUsernameErrorTransform"
+                    Storyboard.TargetProperty="X"
+                    To="10"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+            <Storyboard x:Name="RegisterEmailNoErrorTranslate">
+                <DoubleAnimation
+                    Storyboard.TargetName="RegisterEmailErrorTransform"
+                    Storyboard.TargetProperty="X"
+                    To="10"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+            <Storyboard x:Name="RegisterPasswordNoErrorTranslate">
+                <DoubleAnimation
+                    Storyboard.TargetName="RegisterPasswordErrorTransform"
+                    Storyboard.TargetProperty="X"
+                    To="10"
+                    Duration="0:0:0.25" />
+            </Storyboard>
+            <Storyboard x:Name="RegisterRepeatPasswordNoErrorTranslate">
+                <DoubleAnimation
+                    Storyboard.TargetName="RegisterRepeatPasswordErrorTransform"
+                    Storyboard.TargetProperty="X"
+                    To="10"
+                    Duration="0:0:0.25" />
             </Storyboard>
 
             <local:VisibilityConverter x:Key="VisibilityConverter" />
@@ -226,7 +269,7 @@
             <TextBlock
                 Margin="0,0,0,10"
                 FontFamily="ms-appx:///Assets/Fonts/NotoSerif-Bold.ttf#Noto Serif"
-                FontSize="40"
+                FontSize="30"
                 Foreground="{ThemeResource HoverColor}"
                 Text="WELCOME TO"
                 TextAlignment="Center">
@@ -234,7 +277,7 @@
                     <TranslateTransform x:Name="WelcomeTransform" />
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <Image Width="400" Source="/Assets/AuthImage.png">
+            <Image Width="330" Source="/Assets/AuthImage.png">
                 <Image.RenderTransform>
                     <TranslateTransform x:Name="WelcomeLogoTransform" />
                 </Image.RenderTransform>
@@ -274,7 +317,7 @@
                             Margin="10,0,0,0"
                             FontSize="16"
                             Foreground="{ThemeResource HoverColor}"
-                            Text="Please enter a valid email!">
+                            Text="Not valid email or password!">
                             <TextBlock.RenderTransform>
                                 <TranslateTransform x:Name="LogInEmailErrorTransform" />
                             </TextBlock.RenderTransform>
@@ -300,7 +343,7 @@
                             Margin="10,0,0,0"
                             FontSize="16"
                             Foreground="{ThemeResource HoverColor}"
-                            Text="Error">
+                            Text="">
                             <TextBlock.RenderTransform>
                                 <TranslateTransform x:Name="LogInPasswordErrorTransform" Y="10" />
                             </TextBlock.RenderTransform>
@@ -330,55 +373,158 @@
                     VerticalAlignment="Center"
                     Opacity="0"
                     Orientation="Vertical"
+                    Spacing="10"
                     Visibility="Collapsed">
-                    <TextBox
-                        Width="280"
-                        Height="38"
-                        FontSize="18"
-                        MaxLength="27"
-                        PlaceholderText="Username"
-                        Style="{StaticResource CustomTextBoxStyle}"
-                        TabIndex="5" />
-                    <TextBox
-                        Width="280"
-                        Height="38"
-                        Margin="0,10,0,0"
-                        FontSize="18"
-                        MaxLength="27"
-                        PlaceholderText="Email"
-                        Style="{StaticResource CustomTextBoxStyle}"
-                        TabIndex="6" />
-                    <TextBox
-                        Width="280"
-                        Height="38"
-                        Margin="0,10,0,0"
-                        FontSize="18"
-                        MaxLength="27"
-                        PlaceholderText="Password"
-                        Style="{StaticResource CustomTextBoxStyle}"
-                        TabIndex="7" />
-                    <TextBox
-                        Width="280"
-                        Height="38"
-                        Margin="0,10,0,0"
-                        FontSize="18"
-                        MaxLength="27"
-                        PlaceholderText="Repeat Password"
-                        Style="{StaticResource CustomTextBoxStyle}"
-                        TabIndex="8" />
-
-                    <!--<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <TextBlock
-                            Margin="70,9,0,0"
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel
+                            x:Name="RegisterUsernameErrorText"
+                            Orientation="Horizontal"
+                            Visibility="Collapsed">
+                            <FontIcon
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Foreground="{ThemeResource HoverColor}"
+                                Glyph="&#xE7BA;" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="{ThemeResource HoverColor}"
+                                Text=" Must be at least 3 characters!" />
+                            <StackPanel.RenderTransform>
+                                <TranslateTransform x:Name="RegisterUsernameErrorTransform" />
+                            </StackPanel.RenderTransform>
+                        </StackPanel>
+                        <TextBox
+                            x:Name="RegisterUsernameTextBox"
+                            Width="280"
+                            Height="38"
                             FontSize="18"
-                            Foreground="{ThemeResource HoverColor}"
-                            Text="Light theme" />
-                        <ToggleSwitch
-                            x:Name="ThemeToggle"
-                            Margin="20,0,0,0"
-                            Foreground="{ThemeResource HoverColor}"
-                            Toggled="ThemeToggle_Toggled" />
-                    </StackPanel>-->
+                            MaxLength="27"
+                            PlaceholderText="Username"
+                            Style="{StaticResource CustomTextBoxStyle}"
+                            TabIndex="5">
+                            <TextBox.RenderTransform>
+                                <TranslateTransform x:Name="RegisterUsernameTransform" />
+                            </TextBox.RenderTransform>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel
+                            x:Name="RegisterEmailErrorText"
+                            Orientation="Horizontal"
+                            Visibility="Collapsed">
+                            <FontIcon
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Foreground="{ThemeResource HoverColor}"
+                                Glyph="&#xE7BA;" />
+                            <TextBlock
+                                x:Name="RegisterEmailErrorTextBlock"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="{ThemeResource HoverColor}"
+                                Text=" Please enter a valid one!" />
+                            <StackPanel.RenderTransform>
+                                <TranslateTransform x:Name="RegisterEmailErrorTransform" />
+                            </StackPanel.RenderTransform>
+                        </StackPanel>
+                        <TextBox
+                            x:Name="RegisterEmailTextBox"
+                            Width="280"
+                            Height="38"
+                            FontSize="18"
+                            MaxLength="27"
+                            PlaceholderText="Email"
+                            Style="{StaticResource CustomTextBoxStyle}"
+                            TabIndex="6">
+                            <TextBox.RenderTransform>
+                                <TranslateTransform x:Name="RegisterEmailTransform" />
+                            </TextBox.RenderTransform>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel
+                            x:Name="RegisterPasswordErrorText"
+                            Orientation="Horizontal"
+                            Visibility="Collapsed">
+                            <FontIcon
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Foreground="{ThemeResource HoverColor}"
+                                Glyph="&#xE7BA;" />
+                            <TextBlock
+                                x:Name="RegisterPasswordErrorTextBlock"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="{ThemeResource HoverColor}"
+                                Text=" Error" />
+                            <StackPanel.RenderTransform>
+                                <TranslateTransform x:Name="RegisterPasswordErrorTransform" />
+                            </StackPanel.RenderTransform>
+                        </StackPanel>
+                        <TextBox
+                            x:Name="RegisterPasswordTextBox"
+                            Width="280"
+                            Height="38"
+                            FontSize="18"
+                            MaxLength="27"
+                            PlaceholderText="Password"
+                            Style="{StaticResource CustomTextBoxStyle}"
+                            TabIndex="7">
+                            <TextBox.RenderTransform>
+                                <TranslateTransform x:Name="RegisterPasswordTransform" />
+                            </TextBox.RenderTransform>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel
+                            x:Name="RegisterRepeatPasswordErrorText"
+                            Orientation="Horizontal"
+                            Visibility="Collapsed">
+                            <FontIcon
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Foreground="{ThemeResource HoverColor}"
+                                Glyph="&#xE7BA;" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="{ThemeResource HoverColor}"
+                                Text=" Passwords don't match!" />
+                            <StackPanel.RenderTransform>
+                                <TranslateTransform x:Name="RegisterRepeatPasswordErrorTransform" />
+                            </StackPanel.RenderTransform>
+                        </StackPanel>
+                        <TextBox
+                            x:Name="RegisterRepeatPasswordTextBox"
+                            Width="280"
+                            Height="38"
+                            FontSize="18"
+                            MaxLength="27"
+                            PlaceholderText="Repeat Password"
+                            Style="{StaticResource CustomTextBoxStyle}"
+                            TabIndex="8">
+                            <TextBox.RenderTransform>
+                                <TranslateTransform x:Name="RegisterRepeatPasswordTransform" />
+                            </TextBox.RenderTransform>
+                        </TextBox>
+                    </Grid>
+
                 </StackPanel>
 
                 <StackPanel
@@ -425,6 +571,7 @@
                         Margin="0,20,0,0"
                         HorizontalAlignment="Center"
                         Content="Continue as guest"
+                        Click="GuestBtn_Click"
                         FontSize="20"
                         Style="{StaticResource StandartButtonStyle}"
                         TabIndex="10"

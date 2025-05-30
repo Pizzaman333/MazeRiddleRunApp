@@ -8,7 +8,7 @@
     xmlns:local1="using:RiddleMazeRun.CustomElements"
     Title="RiddleMazeRun">
 
-    <Grid x:Name="MainGrid" >
+    <Grid x:Name="MainGrid" KeyDown="MainGrid_KeyDown" >
         <Grid.Resources>
             <Storyboard x:Name="PauseBtnFadeIn">
                 <DoubleAnimation

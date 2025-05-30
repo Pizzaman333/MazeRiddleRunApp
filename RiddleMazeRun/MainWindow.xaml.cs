@@ -9,21 +9,30 @@ using RiddleMazeRun.Helpers;
 using RiddleMazeRun.Pages;
 using RiddleMazeRun.Services;
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using Windows.System;
 
 namespace RiddleMazeRun;
 
 public sealed partial class MainWindow : Window
 {
     private MainMenuPage menu = new MainMenuPage();
+    /// <summary>
+    /// Перша функція що викликаєтсья при створенні вікна MainWindow
+    /// </summary>
+    private Entities.User currentUser;
     public MainWindow()
     {
         this.InitializeComponent();
 
         var appWindowPresenter = this.AppWindow.Presenter as OverlappedPresenter;
-        appWindowPresenter.PreferredMinimumWidth = 1000;
-        appWindowPresenter.PreferredMinimumHeight = 600;
+        appWindowPresenter.PreferredMinimumWidth = 1300;
+        appWindowPresenter.PreferredMinimumHeight = 748;
+
+        AppWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
 
         var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
         var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
@@ -38,8 +47,13 @@ public sealed partial class MainWindow : Window
             UIHelper.RefreshAllButtons(MainGrid);
         };
         NavigateTo(menu);
+        //NavigateTo(new StoryLevelsPage(2));
     }
 
+    /// <summary>
+    /// Функція за допомогою якої відбувається навігація між сторінками з анімацією
+    /// </summary>
+    /// <param name="page">Сторінка на яку необхідно перейти</param>
     public async void NavigateTo(Page page)
     {
         page.Opacity = 0;
@@ -70,16 +84,49 @@ public sealed partial class MainWindow : Window
         {
             settingsPage.ThemeChangeRequested += ThemeControl_ThemeChangeRequested;
         }
+        else if (page is HelpPage helpPage)
+        {
+            helpPage.NavigateToHowToPlayRequested += (sender, args) =>
+            {
+                NavigateTo(new HowToPlayPage());
+            };
+        }
+        else if (page is MainGamePage mainGamePage)
+        {
+            mainGamePage.NavigateToLevelSelectionRequested += (sender, args) =>
+            {
+                NavigateTo(new LevelSelectionPage());
+            };
+        }
+        else if (page is LevelSelectionPage levelSelectionPage)
+        {
+            levelSelectionPage.NavigateToLevelRequested += (sender, levelObj) =>
+            {
+                int level = (int)levelObj!;
+                NavigateTo(new StoryLevelsPage(level - 1));
+            };
+        }
+        else if (page is StoryLevelsPage storyLevelsPage)
+        {
+            storyLevelsPage.NavigateToNextLevelRequested += (sender, levelObj) =>
+            {
+                int level = (int)levelObj!;
+                NavigateTo(new StoryLevelsPage(level));
+            };
+            storyLevelsPage.NavigateToMainMenuRequested += (sender, args) =>
+            {
+                NavigateTo(menu);
+            };
+        }
 
         UIHelper.RefreshAllButtons(MainGrid);
     }
 
-    //private void ThemeControl_ThemeChangeRequested(object? sender, ThemeChangeRequestedEventArgs e)
-    //{
-    //    MainGrid.RequestedTheme = e.RequestedThemeIsLight ? ElementTheme.Light : ElementTheme.Dark;
-    //    RefreshButtonState(PauseMenuBtn);
-    //}
-
+    /// <summary>
+    /// Функція що викликається при зміні теми
+    /// </summary>
+    /// <param name="sender">Обєкт що запросив зміну</param>
+    /// <param name="e">Аргумент, що включає в собі поточну тему</param>
     private void ThemeControl_ThemeChangeRequested(object? sender, ThemeChangeRequestedEventArgs e)
     {
         var newTheme = e.RequestedThemeIsLight ? ElementTheme.Light : ElementTheme.Dark;
@@ -94,6 +141,10 @@ public sealed partial class MainWindow : Window
         //}
     }
 
+    /// <summary>
+    /// Функція за допомогою якої відбувається навігація між сторінками з шаленою анімацією
+    /// </summary>
+    /// <param name="page">Сторінка на яку необхідно перейти</param>
     public async void NavigateToWithStyle(Page page)
     {
         // Start with transform: translate and rotate
@@ -154,6 +205,10 @@ public sealed partial class MainWindow : Window
         PauseBtnFadeIn.Begin();
     }
 
+    /// <summary>
+    /// Функція за допомогою якої відбувається навігація між сторінками з шаленою анімацією та анімацією для поточної сторінки
+    /// </summary>
+    /// <param name="newPage">Сторінка на яку необхідно перейти</param>
     public async void NavigateWithExitEffect(Page newPage)
     {
         if (MainFrame.Content is not Page currentPage) return;
@@ -213,6 +268,10 @@ public sealed partial class MainWindow : Window
         NavigateToWithStyle(newPage);
     }
 
+    /// <summary>
+    /// Функція за допомогою якої відбувається навігація між сторінками з шаленою анімацією та анімацією для поточної сторінки
+    /// </summary>
+    /// <param name="newPage">Сторінка на яку необхідно перейти</param>
     public async void NavigateWithVortexEffect(Page newPage)
     {
         if (MainFrame.Content is not Page currentPage) return;
@@ -282,6 +341,11 @@ public sealed partial class MainWindow : Window
         PlayVortexIn(newPage);
     }
 
+    /// <summary>
+    /// Анімаційно показує нову сторінку після ефекту виходу з попередньої.
+    /// Використовується у NavigateWithVortexEffect для плавного переходу.
+    /// </summary>
+    /// <param name="page">Сторінка, яка має з’явитися після анімації</param>
     public async void PlayVortexIn(Page page)
     {
         // Setup starting transform
@@ -349,34 +413,71 @@ public sealed partial class MainWindow : Window
         if (page is MainMenuPage) return;
         PauseBtnFadeIn.Begin();
     }
-
-    private void AppWindow_Closing(AppWindow sender, AppWindowClosingEventArgs args)
+    /// <summary>
+    /// Обробник закриття вікна додатка.
+    /// Перехоплює спробу закриття і показує користувачу підтвердження виходу.
+    /// </summary>
+    /// <param name="sender">Джерело події — вікно програми</param>
+    /// <param name="args">Аргументи події закриття</param>
+    private async void AppWindow_Closing(AppWindow sender, AppWindowClosingEventArgs args)
     {
-        if (ConfirmExitControl.Opacity != 0) return;
-        args.Cancel = true; // prevent from closing
-        ConfirmExitControl.Show();
+        //if (ConfirmExitControl.Opacity != 0) return;
+        //args.Cancel = true; // prevent from closing
+        //ConfirmExitControl.Show();
+        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "RiddleMazeRun", "users.json");
+        DataServices dataService = new DataServices();
+
+        bool updated = await dataService.UpdateUserCompletedLevelsAsync(SessionManager.CurrentUser.Email, SessionManager.CurrentUser.HashedPassword, SessionManager.CurrentUser.CompletedLevels, filePath);
+
+        if (updated)
+            Debug.WriteLine("User updated successfully.");
+        else
+            Debug.WriteLine("User not found or failed to update.");
+
     }
 
+    /// <summary>
+    /// Обробник натискання кнопки відкриття пауз-меню.
+    /// Виконує навігацію до меню та запускає анімацію зникнення кнопки паузи.
+    /// </summary>
+    /// <param name="sender">Джерело події — кнопка</param>
+    /// <param name="e">Аргументи події натискання</param>
     private async void PauseMenuBtn_Click(object sender, RoutedEventArgs e)
     {
         //NavigateWithVortexEffect(menu);
         //NavigateWithExitEffect(menu);
         NavigateTo(menu);
         PauseBtnFadeOut.Begin();
-        UIHelper.RefreshAllButtons(MainGrid);
     }
 
-    //private void ThemeToggle_Toggled(object sender, RoutedEventArgs e)
-    //{
-    //    if (ThemeToggle.IsOn)
-    //    {
-    //        // Set the theme to Dark for the root container
-    //        DaddyGrid.RequestedTheme = ElementTheme.Light;
-    //    }
-    //    else
-    //    {
-    //        // Set the theme to Light for the root container
-    //        DaddyGrid.RequestedTheme = ElementTheme.Dark;
-    //    }
-    //}
+    /// <summary>
+    /// Обробник натискання клавіш.
+    /// При натисканні клавіші Escape відбувається повернення до меню з анімацією.
+    /// </summary>
+    /// <param name="sender">Об’єкт, який отримав подію</param>
+    /// <param name="e">Аргументи події клавіатури</param>
+    private void MainGrid_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+    {
+        if (MainFrame.Content is StoryLevelsPage) return;
+
+        if (e.Key == VirtualKey.Escape)
+        {
+            if (MainFrame.Content is MainMenuPage)
+            {
+                AppWindow.SetPresenter(AppWindowPresenterKind.Default);
+            }
+            else
+            {
+                NavigateTo(menu);
+                PauseBtnFadeOut.Begin();
+            }
+        }
+        else if (e.Key == VirtualKey.F11)
+        {
+            if (MainFrame.Content is MainMenuPage)
+            {
+                AppWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
+            }
+        }
+    }
 }

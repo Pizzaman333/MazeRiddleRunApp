@@ -1,18 +1,27 @@
 using Microsoft.UI.Xaml.Controls;
+using System;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
-namespace RiddleMazeRun.Pages
+namespace RiddleMazeRun.Pages;
+public sealed partial class MainGamePage : Page
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Подія, яка ініціюється при натисканні кнопки переходу до вибору рівнів.
     /// </summary>
-    public sealed partial class MainGamePage : Page
+    public event EventHandler<object?> NavigateToLevelSelectionRequested;
+
+    /// <summary>
+    /// Ініціалізує новий екземпляр класу MainGamePage
+    /// </summary>
+    public MainGamePage()
     {
-        public MainGamePage()
-        {
-            this.InitializeComponent();
-        }
+        InitializeComponent();
+    }
+
+    /// <summary>
+    /// Обробляє натискання кнопки "Story", викликаючи подію "NavigateToLevelSelectionRequested
+    /// </summary>
+    private void StoryButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        NavigateToLevelSelectionRequested?.Invoke(this, null);
     }
 }

@@ -5,16 +5,84 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:RiddleMazeRun.Pages"
+    xmlns:local1="using:RiddleMazeRun.CustomElements"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource BgColorBrush}">
+    <Grid Padding="40" Background="{ThemeResource BgColorBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
         <TextBlock
+            Margin="0,30,0,0"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="56"
-            Text="About the game" />
+            VerticalAlignment="Top"
+            FontSize="48"
+            FontWeight="Bold"
+            Foreground="{ThemeResource HoverColor}"
+            Text="About the Game" />
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="0,20,0,0" Spacing="20">
+                <TextBlock
+                    FontSize="20"
+                    Foreground="{ThemeResource HoverColor}"
+                    Text="Riddle Maze Run throws you into an ever-shifting labyrinth filled with traps, puzzles, and secrets. No two runs are the same — every playthrough is a new challenge to conquer."
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    FontSize="20"
+                    Foreground="{ThemeResource HoverColor}"
+                    Text="Created as a term paper for second year of college, Riddle Maze Run blends action and brainpower. As you navigate the maze, you'll need quick reflexes and sharp logic to survive."
+                    TextWrapping="Wrap" />
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="20">
+                    <Image
+                        Width="610"
+                        Height="430"
+                        HorizontalAlignment="Center"
+                        Source="/Assets/big-picture.png"
+                        Stretch="UniformToFill" />
+                    <Image
+                        Width="610"
+                        Height="430"
+                        HorizontalAlignment="Center"
+                        Source="/Assets/big-picture2.png"
+                        Stretch="UniformToFill" />
+                </StackPanel>
+
+                <TextBlock
+                    FontSize="20"
+                    Foreground="{ThemeResource HoverColor}"
+                    Text="Every corner hides a mystery — from collapsing floors and spike traps to time-limited challenges. Strategically collect power-ups, avoid hazards, and outwit the maze itself."
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    FontSize="20"
+                    Foreground="{ThemeResource HoverColor}"
+                    Text="The game is still growing. Future updates will bring new biomes, characters, multiplayer modes, and more. Your feedback shapes the maze — so keep exploring and let us know what you'd like to see next!"
+                    TextWrapping="Wrap" />
+
+                <local1:ButtonWithHover
+                    Height="50"
+                    HorizontalAlignment="Stretch"
+                    Click="VisitWebsiteButton_Click"
+                    Style="{ThemeResource StandartButtonStyle}">
+                    <FontIcon
+                        Margin="0,0,0,5"
+                        HorizontalAlignment="Left"
+                        FontSize="24"
+                        FontWeight="SemiBold"
+                        Glyph="&#xE774;  Learn more or leave feedback" />
+                </local1:ButtonWithHover>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
+
+
 </Page>
- 

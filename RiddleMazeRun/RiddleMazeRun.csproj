@@ -18,19 +18,50 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\AuthImage.png" />
+    <None Remove="Assets\big-picture.png" />
+    <None Remove="Assets\big-picture2.png" />
     <None Remove="Assets\Fonts\NotoSerif-Bold.ttf" />
     <None Remove="Assets\Fonts\NotoSerif-ExtraBold.ttf" />
     <None Remove="Assets\Fonts\NotoSerif-Regular.ttf" />
     <None Remove="Assets\logo_min_high.scale-100.png" />
+    <None Remove="Assets\Parts\collectible.png" />
+    <None Remove="Assets\Parts\Objects\object1.png" />
+    <None Remove="Assets\Parts\Objects\object2.png" />
+    <None Remove="Assets\Parts\Objects\object3.png" />
+    <None Remove="Assets\Parts\Objects\object4.png" />
+    <None Remove="Assets\Parts\Objects\object5.png" />
+    <None Remove="Assets\Parts\player_spawn.png" />
+    <None Remove="Assets\Parts\player_spawn_2.png" />
+    <None Remove="Assets\Parts\tile_1.png" />
+    <None Remove="Assets\Parts\tile_10.png" />
+    <None Remove="Assets\Parts\tile_11.png" />
+    <None Remove="Assets\Parts\tile_12.png" />
+    <None Remove="Assets\Parts\tile_13.png" />
+    <None Remove="Assets\Parts\tile_14.png" />
+    <None Remove="Assets\Parts\tile_15.png" />
+    <None Remove="Assets\Parts\tile_2.png" />
+    <None Remove="Assets\Parts\tile_3.png" />
+    <None Remove="Assets\Parts\tile_4.png" />
+    <None Remove="Assets\Parts\tile_5.png" />
+    <None Remove="Assets\Parts\tile_6.png" />
+    <None Remove="Assets\Parts\tile_7.png" />
+    <None Remove="Assets\Parts\tile_8.png" />
+    <None Remove="Assets\Parts\tile_9.png" />
+    <None Remove="Assets\Parts\wall.jpg" />
+    <None Remove="Assets\player.gif" />
+    <None Remove="Assets\Skins\spritesheet.png" />
     <None Remove="Controls\ConfirmExitControl.xaml" />
     <None Remove="Controls\ThemeChangerControl.xaml" />
     <None Remove="Gradients\BgGradientCircular.xaml" />
     <None Remove="Pages\AboutPage.xaml" />
+    <None Remove="Pages\CustomLevelsPage.xaml" />
     <None Remove="Pages\HelpPage.xaml" />
     <None Remove="Pages\HowToPlayPage.xaml" />
+    <None Remove="Pages\LevelSelectionPage.xaml" />
     <None Remove="Pages\MainGamePage.xaml" />
     <None Remove="Pages\MainMenuPage.xaml" />
     <None Remove="Pages\SettingsPage.xaml" />
+    <None Remove="Pages\StoryLevelsPage.xaml" />
     <None Remove="Styles\BtnStyle.xaml" />
     <None Remove="Styles\ColorsDark.xaml" />
     <None Remove="Styles\GridStyle.xaml" />
@@ -62,8 +93,10 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250401001" />
+    <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.3.2" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.4188" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250513003" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.5" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Styles\ColorsDark.xaml">
@@ -102,10 +135,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Colors\" />
-    <Folder Include="UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="Assets\AuthImage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\big-picture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\big-picture2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Fonts\NotoSerif-Bold.ttf">
@@ -120,6 +158,129 @@
     <Content Update="Assets\MainLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\map.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Maps\map-lvl0.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Maps\map-lvl1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Maps\map-lvl2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Maps\map-lvl3.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Maps\map-lvl4.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\collectible.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\finish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\Objects\object2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\Objects\object3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\Objects\object4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\Objects\object5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Assets\Parts\tile_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\player_spawn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\tile_9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Parts\wall.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Assets\Parts\player_spawn_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\player.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Skins\spritesheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Assets\Parts\Objects\object1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\LevelSelectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\CustomLevelsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\StoryLevelsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\ThemeChangerControl.xaml">
@@ -194,5 +355,15 @@
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
 	  <DefaultLanguage>uk-UA</DefaultLanguage>
 	  <SupportedCultures>en-US;uk-UA</SupportedCultures>
+	  <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+	  <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+	  <PackageCertificateKeyFile>RiddleMazeRun_TemporaryKey.pfx</PackageCertificateKeyFile>
+	  <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+	  <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+	  <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+	  <GenerateTestArtifacts>True</GenerateTestArtifacts>
+	  <AppxBundle>Always</AppxBundle>
+	  <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+	  <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
 </Project>

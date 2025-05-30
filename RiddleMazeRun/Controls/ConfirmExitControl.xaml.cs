@@ -10,6 +10,9 @@ namespace RiddleMazeRun.Controls;
 
 public sealed partial class ConfirmExitControl : UserControl
 {
+    /// <summary>
+    /// Підтвердження виходу
+    /// </summary>
     public ConfirmExitControl()
     {
         this.InitializeComponent();

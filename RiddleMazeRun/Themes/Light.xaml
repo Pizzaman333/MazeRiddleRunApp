@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="BgColorBrush" Color="#101820" />
+    <SolidColorBrush x:Key="BgColorBrush" Color="#0c3416" />
+    <SolidColorBrush x:Key="CardBackgroundColor" Color="#1d2a38" />
     <Color x:Key="HighlightColor">#2aa837</Color>
-    <Color x:Key="DarkHighlightColor">#0b3114</Color>
+    <Color x:Key="DarkHighlightColor">#10451c</Color>
     <Color x:Key="HoverColor">#e8ede5</Color>
     <Color x:Key="SubTextColor">#8d998e</Color>
+    <Color x:Key="DisabledColor">#1c7024</Color>
+    <Color x:Key="DisabledTextColor">#ccc7c7</Color>
 </ResourceDictionary>

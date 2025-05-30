@@ -5,15 +5,70 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:RiddleMazeRun.Pages"
+    xmlns:local1="using:RiddleMazeRun.CustomElements"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource BgColorBrush}">
+    <Grid Padding="40" Background="{ThemeResource BgColorBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
         <TextBlock
+            Margin="0,30,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontSize="48"
+            FontWeight="Bold"
+            Foreground="{ThemeResource HoverColor}"
+            Text="Help" />
+
+        <StackPanel
+            Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="56"
-            Text="Help" />
+            Spacing="20">
+            <TextBlock
+                FontSize="20"
+                Foreground="{ThemeResource HoverColor}"
+                Text="Lost in the maze? Need help finding your way?"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <TextBlock
+                FontSize="16"
+                Foreground="{ThemeResource SubTextColor}"
+                Text="You can learn the basics in the How to Play section or visit our website if you have a question or feedback."
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+            <local1:ButtonWithHover
+                Width="300"
+                Height="40"
+                HorizontalAlignment="Center"
+                Click="GpToHowToPlayButton_Click"
+                FontSize="20"
+                Style="{ThemeResource StandartButtonStyle}">
+                <FontIcon
+                    Margin="0,0,0,5"
+                    HorizontalAlignment="Left"
+                    FontWeight="SemiBold"
+                    Glyph="&#xE82D;  How to Play" />
+            </local1:ButtonWithHover>
+            <local1:ButtonWithHover
+                Width="300"
+                Height="40"
+                HorizontalAlignment="Center"
+                Click="VisitWebsiteButton_Click"
+                FontSize="20"
+                Style="{ThemeResource StandartButtonStyle}">
+                <FontIcon
+                    Margin="0,0,0,5"
+                    HorizontalAlignment="Left"
+                    FontWeight="SemiBold"
+                    Glyph="&#xE774;  Visit Website" />
+            </local1:ButtonWithHover>
+        </StackPanel>
     </Grid>
 </Page>

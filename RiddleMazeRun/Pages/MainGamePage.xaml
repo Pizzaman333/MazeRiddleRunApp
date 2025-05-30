@@ -3,17 +3,45 @@
     x:Class="RiddleMazeRun.Pages.MainGamePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:RiddleMazeRun.Pages"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    mc:Ignorable="d">
+    xmlns:local1="using:RiddleMazeRun.CustomElements"
+    Background="{ThemeResource BgColorBrush}">
 
-    <Grid Background="{ThemeResource BgColorBrush}">
-        <TextBlock
+    <Grid>
+        <StackPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="56"
-            Text="Game" />
+            Spacing="60">
+            <TextBlock
+                FontFamily="ms-appx:///Assets/Fonts/NotoSerif-Bold.ttf#Noto Serif"
+                FontSize="72"
+                Foreground="{ThemeResource HoverColor}"
+                Text="Choose game mode"
+                TextAlignment="Center" />
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal"
+                Spacing="60">
+                <local1:ButtonWithHover
+                    Width="500"
+                    Height="150"
+                    HorizontalAlignment="Center"
+                    Content="Story mode"
+                    Click="StoryButton_Click"
+                    CornerRadius="70"
+                    FontSize="60"
+                    Style="{StaticResource StandartButtonStyle}"
+                    UseSystemFocusVisuals="False" />
+                <local1:ButtonWithHover
+                    Width="500"
+                    Height="150"
+                    HorizontalAlignment="Center"
+                    Content="Sandbox"
+                    CornerRadius="70"
+                    FontSize="60"
+                    Style="{StaticResource StandartButtonStyle}"
+                    UseSystemFocusVisuals="False" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

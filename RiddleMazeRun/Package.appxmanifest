@@ -9,8 +9,8 @@
 
   <Identity
     Name="fe827657-9806-4266-885b-86d3d6727171"
-    Publisher="CN=User1"
-    Version="1.0.0.0" />
+    Publisher="CN=Pizzaman"
+    Version="1.0.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="fe827657-9806-4266-885b-86d3d6727171" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
